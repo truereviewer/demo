@@ -7,7 +7,7 @@
                     <div class="aspect-w-1 aspect-h-1">
                         <img class="object-cover rounded-xl"
                              src="{{ $this->image->getUrl('large') }}"
-                             alt="{{ $this->product->translateAttribute('name') }}" />
+                             alt="{{ $this->product->translateAttribute('name') }}"/>
                     </div>
                 @endif
 
@@ -18,7 +18,7 @@
                             <img loading="lazy"
                                  class="object-cover rounded-xl"
                                  src="{{ $image->getUrl('small') }}"
-                                 alt="{{ $this->product->translateAttribute('name') }}" />
+                                 alt="{{ $this->product->translateAttribute('name') }}"/>
                         </div>
                     @endforeach
                 </div>
@@ -31,7 +31,7 @@
                     </h1>
 
                     <x-product-price class="ml-4 font-medium"
-                                     :variant="$this->variant" />
+                                     :variant="$this->variant"/>
                 </div>
 
                 <p class="mt-1 text-sm text-gray-500">
@@ -42,8 +42,11 @@
                     {!! $this->product->translateAttribute('description') !!}
                 </article>
 
-                <div class="my-4" wire:ignore>
-                    <review-widget id="{{$this->product->getKey()}}" model-type="{{$this->product->getMorphClass()}}" size="md"></review-widget>
+                <div id="widget" class="my-4" wire:ignore>
+                    <review-widget
+                        id="{{$this->product->getKey()}}"
+                        model-type="{{$this->product->getMorphClass()}}" size="md"
+                    ></review-widget>
                 </div>
 
                 <form class="mt-4">
@@ -53,47 +56,42 @@
                                 <legend class="text-xs font-medium text-gray-700">
                                     {{ $option['option']->translate('name') }}
                                 </legend>
-
-{{--                                <div class="flex flex-wrap gap-2 mt-2 text-xs tracking-wide uppercase"--}}
-{{--                                     x-data="{--}}
-{{--                                         selectedOption: @entangle('selectedOptionValues').live,--}}
-{{--                                         selectedValues: [],--}}
-{{--                                     }"--}}
-{{--                                     x-init="selectedValues = Object.values(selectedOption);--}}
-{{--                                     $watch('selectedOption', value =>--}}
-{{--                                         selectedValues = Object.values(selectedOption)--}}
-{{--                                     )"--}}
-{{--                                >--}}
-{{--                                    @foreach ($option['values'] as $value)--}}
-{{--                                        <button class="px-6 py-4 font-medium border rounded-lg focus:outline-none focus:ring"--}}
-{{--                                                type="button"--}}
-{{--                                                wire:click="--}}
-{{--                                               $set('selectedOptionValues.{{ $option['option']->id }}', {{ $value->id }})--}}
-{{--                                            "--}}
-{{--                                                :class="{--}}
-{{--                                                    'bg-indigo-600 border-indigo-600 text-white hover:bg-indigo-700': selectedValues--}}
-{{--                                                        .includes({{ $value->id }}),--}}
-{{--                                                    'hover:bg-gray-100': !selectedValues.includes({{ $value->id }})--}}
-{{--                                                }">--}}
-{{--                                            {{ $value->translate('name') }}--}}
-{{--                                        </button>--}}
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
                             </fieldset>
                         @endforeach
                     </div>
                     <div class="max-w-xs mt-8">
                         <livewire:components.add-to-cart :purchasable="$this->variant"
-                                                         :wire:key="$this->variant->id" />
+                                                         :wire:key="$this->variant->id"/>
                     </div>
                 </form>
             </div>
         </div>
 
         <hr>
-            <div wire:ignore>
-                <reviewer id="{{$this->product->getKey()}}" model-type="{{$this->product->getMorphClass()}}"></reviewer>
-            </div>
+        <div id="#reviewer" wire:ignore>
+            <reviewer id="{{$this->product->getKey()}}" model-type="{{$this->product->getMorphClass()}}"></reviewer>
         </div>
+    </div>
 
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                let widget = document.getElementById('widget');
+
+                widget.addEventListener('click', function () {
+                    navigate('#reviewer', 0, 50);
+                })
+            })
+
+            function navigate(elementId, increment = 0, decrement = 0) {
+                elementId = decodeURI(elementId);
+
+                let target = document.getElementById(`${elementId}`);
+                let offset = target.getBoundingClientRect();
+
+                window.scrollTo({top: offset.top - decrement + increment, behavior: 'smooth'});
+                this.activeId = elementId;
+            }
+        </script>
+    @endpush
 </section>

@@ -40,6 +40,8 @@
 
 @livewireScripts
 @reviewerScripts
+
+@stack('scripts')
 </body>
 
 </html>

@@ -28,3 +28,4 @@ public/build
 meilisearch/
 .phpunit.cache/test-results
 auth.json
+*.hot
