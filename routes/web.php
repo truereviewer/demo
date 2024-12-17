@@ -1,11 +1,14 @@
 <?php
 
+use App\Livewire\Auth\Login;
 use App\Livewire\CheckoutPage;
 use App\Livewire\CheckoutSuccessPage;
 use App\Livewire\CollectionPage;
 use App\Livewire\Home;
 use App\Livewire\ProductPage;
 use App\Livewire\SearchPage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +33,15 @@ Route::get('search', SearchPage::class)->name('search.view');
 Route::get('checkout', CheckoutPage::class)->name('checkout.view');
 
 Route::get('checkout/success', CheckoutSuccessPage::class)->name('checkout-success.view');
+
+Route::middleware(['guest'])->get('login', Login::class)->name('login');
+
+Route::get('logout', function (Request $request) {
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect()->back();
+});

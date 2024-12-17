@@ -17,8 +17,6 @@
         rel="stylesheet"
     >
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
     <link
         rel="icon"
         href="{{ asset('favicon.svg') }}"
@@ -26,6 +24,8 @@
 
     @livewireStyles
     @reviewerStyles
+
+    @vite(['resources/css/app.css'])
 </head>
 
 <body class="antialiased text-gray-900">
