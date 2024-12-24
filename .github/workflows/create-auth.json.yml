@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v2
       - name: create-json
         id: create-json
-        uses: jsdaniell/create-json@1.2.3
+        uses: jsdaniell/create-json@v1.2.3
         with:
           name: "auth.json"
           json: ${{ secrets.REVIEWER_ACCESS }}
