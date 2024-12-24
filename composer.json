@@ -76,11 +76,8 @@
     "prefer-stable": false,
     "repositories": [
         {
-            "type": "path",
-            "url": "D:/Packages/windows/truereviewer/reviewer",
-            "options": {
-                "symlink": true
-            }
+            "type": "vcs",
+            "url": "https://github.com/truereviewer/reviewer.git"
         }
     ]
 }
