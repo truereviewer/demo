@@ -13,6 +13,9 @@
         { "src": "/(.*)", "dest": "/api/index.php" }
     ],
     "public": true,
+    "github": {
+        "enabled": false
+    },
     "buildCommand": "vite build",
     "outputDirectory": "public",
     "env": {

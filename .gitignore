@@ -29,3 +29,5 @@ public/build
 meilisearch/
 .phpunit.cache/test-results
 *.hot
+
+.vercel
