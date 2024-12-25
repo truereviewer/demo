@@ -9,6 +9,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 jobs:
   create-auth-json:
     runs-on: ubuntu-latest
