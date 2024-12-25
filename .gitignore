@@ -31,4 +31,5 @@ meilisearch/
 *.hot
 auth.json
 .vercel
-*vercel*
+vercel.json
+.vercelignore
