@@ -29,8 +29,5 @@
         "LOG_CHANNEL": "stderr",
         "CACHE_DRIVER": "database",
         "SESSION_DRIVER": "database"
-    },
-    "engines": {
-        "node": "18.x"
     }
 }
