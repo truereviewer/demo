@@ -7,10 +7,10 @@
         name="viewport"
         content="width=device-width, initial-scale=1"
     >
-    <title>Demo Storefront</title>
+    <title>Reviewer Demo</title>
     <meta
         name="description"
-        content="Example of an ecommerce storefront built with Lunar."
+        content="Reviewer demo built with Lunar."
     >
     <link
         href="{{ asset('css/app.css') }}"
@@ -19,7 +19,7 @@
 
     <link
         rel="icon"
-        href="{{ asset('favicon.svg') }}"
+        href="{{ asset('favicon.png') }}"
     >
 
     @livewireStyles
@@ -28,7 +28,7 @@
     @vite(['resources/css/app.css'])
 </head>
 
-<body class="antialiased text-gray-900">
+<body class="antialiased">
 @livewire('components.navigation')
 
 <main id="reviewer">

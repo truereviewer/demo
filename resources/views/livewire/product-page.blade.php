@@ -34,11 +34,11 @@
                                      :variant="$this->variant"/>
                 </div>
 
-                <p class="mt-1 text-sm text-gray-500">
+                <p class="mt-1 text-sm text-gray-500 dark:text-white">
                     {{ $this->variant->sku }}
                 </p>
 
-                <article class="mt-4 text-gray-700">
+                <article class="mt-4 text-gray-700 dark:text-white">
                     {!! $this->product->translateAttribute('description') !!}
                 </article>
 
@@ -53,7 +53,7 @@
                     <div class="space-y-4">
                         @foreach ($this->productOptions as $option)
                             <fieldset>
-                                <legend class="text-xs font-medium text-gray-700">
+                                <legend class="text-xs font-medium text-gray-700 dark:text-white">
                                     {{ $option['option']->translate('name') }}
                                 </legend>
                             </fieldset>
