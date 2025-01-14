@@ -5,10 +5,10 @@
                 Welcome to the
 
                 <span class="text-indigo-600">
-                    Lunar
+                    Reviewer
                 </span>
 
-                Demo Store
+                Demo
 
                 <span role="img"
                       aria-hidden="true">
@@ -17,8 +17,7 @@
             </h1>
 
             <p class="mt-4 font-medium sm:leading-relaxed sm:text-xl">
-                This is an example of a classic e-commerce store built with Lunar.
-                We are currently making a screencast series to show you how we did it!
+                This is an demo of a classic e-commerce store built with Lunar to demonstrate the reviewer.
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 mt-8">
@@ -26,14 +25,7 @@
                    href="https://lunarphp.io/"
                    target="_blank"
                    rel="noopener noreferrer">
-                    Lunar Website
-                </a>
-
-                <a class="block w-full px-12 py-3 font-medium text-indigo-600 rounded shadow sm:w-auto hover:text-indigo-700 active:text-indigo-500 focus:outline-none focus:ring"
-                   href="https://github.com/lunarphp/demo-store"
-                   target="_blank"
-                   rel="noopener noreferrer">
-                    Demo Store Repo
+                    Reviewer Website
                 </a>
             </div>
         </div>
