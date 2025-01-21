@@ -34,3 +34,4 @@ auth.json
 vercel.json
 .vercelignore
 public/store
+public/vendor/truereviewer
