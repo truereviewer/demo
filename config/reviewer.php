@@ -50,6 +50,11 @@ return [
     ],
 
     /**
+     * API route prefix
+     */
+    'route_prefix' => 'reviewer',
+
+    /**
      * @extends \Illuminate\Foundation\Auth\User
      */
     'user_model' => User::class,

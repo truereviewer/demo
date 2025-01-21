@@ -81,6 +81,8 @@
                 widget.addEventListener('click', function () {
                     navigate('#reviewer', 0, 50);
                 })
+
+                navigate('#reviewer', 0, 50);
             })
 
             function navigate(elementId, increment = 0, decrement = 0) {
