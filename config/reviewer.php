@@ -3,6 +3,7 @@
 namespace TrueReviewer\Reviewer;
 
 use App\Models\User;
+use TrueReviewer\Reviewer\Models\Check;
 use TrueReviewer\Reviewer\Models\Media;
 use TrueReviewer\Reviewer\Models\Reaction;
 use TrueReviewer\Reviewer\Models\Report;
@@ -47,6 +48,13 @@ return [
             'class' => Report::class,
             'table' => 'reports',
         ],
+        'check_model' => [
+            /**
+             * @extends Check
+             */
+            'class' => Check::class,
+            'table' => 'checks',
+        ],
     ],
 
     /**
@@ -75,16 +83,6 @@ return [
     'enable_media' => true,
 
     /**
-     * Use when image is not found in media gallery
-     */
-    'fallback_image' => '/vendor/truereviewer/reviewer/images/image-not-found.png',
-
-    /**
-     * Use when image is loading
-     */
-    'loading_image' => '/vendor/truereviewer/reviewer/images/image-loading.png',
-
-    /**
      * Max uploadable media size limit in killobytes
      */
     'media_size' => 2048,
@@ -99,6 +97,16 @@ return [
      * Attachable no of media per review
      */
     'no_of_media_per_review' => 5,
+
+    /**
+     * Use when image is not found in media gallery
+     */
+    'fallback_image' => 'vendor/truereviewer/reviewer/images/image-not-found.png',
+
+    /**
+     * Use when image is loading
+     */
+    'loading_image' => 'vendor/truereviewer/reviewer/images/image-loading.png',
 
     /**
      * Available options, page, scroll
@@ -170,4 +178,87 @@ return [
         ],
     ],
 
+    'LLM' => [
+        /**
+         * Must be a type of EchoLabs\Prism\Enums\Provider
+         */
+        'provider' => null,
+        'model' => '',
+    ],
+
+    /**
+     * Detect reviews' sentiment
+     * Required to set LLM and manual installation of prism package https://prism.echolabs.dev/
+     */
+    'sentiment_detector' => [
+        'queue' => 'default',
+        'enabled' => false,
+    ],
+
+    /**
+     * Perform checks to authenticate the integrity of the review
+     * Required to set LLM and manual installation of prism package https://prism.echolabs.dev/
+     */
+    'checks' => [
+        'queue' => 'default',
+
+        'profanity' => [
+            /**
+             * Review will be rejected if it contains profanity
+             */
+            'enabled' => false,
+            /**
+             * Replace profanity with this approved word
+             */
+            'replace' => false,
+            /**
+             * Strictness level of the profanity check. 10 means most strict and 1 means least strict
+             */
+            'level' => 5,
+        ],
+        'harassment' => [
+            /**
+             * Review will be rejected if it implies harassment
+             */
+            'enabled' => false,
+            /**
+             * Strictness level of the harassment check. 10 means most strict and 1 means least strict
+             */
+            'level' => 5,
+        ],
+        'robot' => [
+            /**
+             * Review will be rejected if it implies harassment
+             */
+            'enabled' => false,
+            /**
+             * Strictness level of the harassment check. 10 means most strict and 1 means least strict
+             */
+            'level' => 5,
+        ],
+    ],
+
+    'theme' => [
+        /**
+         * Available options: aura, lara, nora, material
+         */
+        'preset' => 'aura',
+
+        /**
+         * Available options: noir, emerald, green, lime, orange, amber, yellow, teal, cyan, sky,
+         * blue, indigo, violet, purple, fuchsia, pink, rose
+         *
+         * @see https://github.com/truereviewer/reviewer/blob/main/resources/ts/components/ThemeSwitcher/primaryColors.ts
+         *  to add custom primary colors
+         */
+        'primary_color' => 'emerald',
+
+        'surface_color' => 'slate',
+
+        'ripple' => true,
+
+        'dark_mode_selector' => 'system',
+    ],
+
+    'show_theme_switcher' => false,
 ];
